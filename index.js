@@ -77,10 +77,10 @@ const products = [
     },
   ];
   
-  const addData = async () => {
+const addData = async () => {
     products.map(async (product) => {
         await postFunction(product)
-    })
+      })
 }
 
 // addData()
