@@ -9,7 +9,6 @@ const inputPrice = document.getElementById('inputPrice')
 const submitBtn = document.getElementById('submitBtn')
 
 submitBtn.addEventListener('click', () => {
-    console.log(inputName.value);
 
     let newProduct = {
         name: inputName.value,

@@ -83,15 +83,13 @@ const addData = async () => {
       })
 }
 
-// addData()
+// addData() //commentato perchè ho aggiunto una sola volta i 10 elementi dell'array
 
 const getData = async () => {
     const response = await getFunction()
     const data = await response.json()
     
-    console.log(data);
     iterazioneProdotto(data)
-    console.log(cards);
     for(let i = 0; i < cards.length; i++) {
         cards[i].addEventListener('click', () => {
             window.open('details.html?id=' + cards[i].attributes.id.value)
