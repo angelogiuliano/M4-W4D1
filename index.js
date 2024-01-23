@@ -1,8 +1,9 @@
-import { getFunction } from "./GET.js";
-import { postFunction } from "./POST.js";
-import { iterazioneProdotto } from "./iterazioneProdotto.js";
+import { getFunction } from "./comps/GET.js";
+import { postFunction } from "./comps/POST.js";
+import { iterazioneProdotto } from "./comps/iterazioneProdotto.js";
 
 const main = document.getElementById('main')
+const cards = document.getElementsByClassName('card')
 const products = [
     {
       name: "3310 cellphone",
@@ -90,6 +91,12 @@ const getData = async () => {
     
     console.log(data);
     iterazioneProdotto(data)
+    console.log(cards);
+    for(let i = 0; i < cards.length; i++) {
+        cards[i].addEventListener('click', () => {
+            window.open('details.html?id=' + cards[i].attributes.id.value)
+        })
+    }
 }
 
 getData()
