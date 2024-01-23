@@ -5,6 +5,5 @@ export const getFunction = async () => {
             }
         }
     )
-
     return response
 }

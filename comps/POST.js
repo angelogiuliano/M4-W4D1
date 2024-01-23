@@ -1,4 +1,5 @@
 export const postFunction = async (prodotto) => {
+    console.log(prodotto);
     await fetch("https://striveschool-api.herokuapp.com/api/product/", {
         "method": "POST",
         "body": JSON.stringify(prodotto),
