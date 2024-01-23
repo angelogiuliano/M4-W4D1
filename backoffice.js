@@ -26,7 +26,7 @@ const getData = async () => {
     const deleteButtons = document.getElementsByClassName("deletebtn");
     for (let i = 0; i < deleteButtons.length; i++) {
       deleteButtons[i].addEventListener("click", async () => {
-        await deleteButtonsFunction(deleteButtons[i])
+        await deleteButtonsFunction(deleteButtons[i]);
       });
     }
   };
