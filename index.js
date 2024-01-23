@@ -1,3 +1,7 @@
+import { getFunction } from "./GET.js";
+import { postFunction } from "./POST.js";
+import { iterazioneProdotto } from "./iterazioneProdotto.js";
+
 const main = document.getElementById('main')
 const products = [
     {
@@ -71,51 +75,21 @@ const products = [
       price: 49
     },
   ];
-
-  
   
   const addData = async () => {
     products.map(async (product) => {
-        let response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
-            "method": "POST",
-            "body": JSON.stringify(product),
-            "headers": {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFmODQ2OGJkNWQxMjAwMTg5MGQ0MGYiLCJpYXQiOjE3MDYwMDE1MTIsImV4cCI6MTcwNzIxMTExMn0.wyFsUsu7OzvDudhm7iGya_kuV22lKRLgapk640y6uDo"
-            }
-        })
-
-        const data = await response.json()
-        console.log(data);
+        await postFunction(product)
     })
 }
 
-addData()
+// addData()
 
 const getData = async () => {
-    const response = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
-        headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWFmODQ2OGJkNWQxMjAwMTg5MGQ0MGYiLCJpYXQiOjE3MDYwMDE1MTIsImV4cCI6MTcwNzIxMTExMn0.wyFsUsu7OzvDudhm7iGya_kuV22lKRLgapk640y6uDo"
-            }
-        }
-    )
-
+    const response = await getFunction()
     const data = await response.json()
-    console.log(data);
-
-    data.map((product) => {
-        main.innerHTML += 
-        `
-        <div class="card" style="width: 18rem;">
-        <img src=${product.imageUrl} class="card-img-top w-75 m-auto my-3" alt=${product.name}>
-        <div class="card-body">
-          <h5 class="card-title">${product.name}</h5>
-          <p class="card-text"><b>Price:</b> ${product.price} $</p>
-        </div>
-      </div>
-        `
-    })
     
+    console.log(data);
+    iterazioneProdotto(data)
 }
 
 getData()
