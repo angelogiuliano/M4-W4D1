@@ -3,7 +3,6 @@ import { editButtonsFunction } from "./comps/editButtonsFunction.js";
 
 const params = new URLSearchParams(location.search);
 const id = params.get("id");
-console.log(id);
 
 const inputNameEdit = document.getElementById("inputNameEdit");
 const inputDescEdit = document.getElementById("inputDescEdit");
@@ -16,7 +15,6 @@ const check = document.getElementById("exampleCheck1");
 let editedProduct = {};
 
 check.addEventListener("change", function () {
-  console.log(check.checked);
   submitBtn.classList.toggle("disabled");
 
   editedProduct.name = inputNameEdit.value;

@@ -33,7 +33,6 @@ const getData = async () => {
     }
 
     const editButtons = document.getElementsByClassName("editbtn");
-    console.log(editButtons);
     for (const button of editButtons) {
       button.addEventListener("click", () => {
         window.location.assign(

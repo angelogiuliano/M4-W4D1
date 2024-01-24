@@ -7,8 +7,13 @@ const inputBrand = document.getElementById("inputBrand");
 const InputUrl = document.getElementById("InputUrl");
 const inputPrice = document.getElementById("inputPrice");
 const submitBtn = document.getElementById("submitBtn");
+const check = document.getElementById('exampleCheck1')
 
-submitBtn.addEventListener("click", () => {
+check.addEventListener("change", function () {
+  submitBtn.classList.toggle("disabled");
+})
+
+submitBtn.addEventListener("click", async () => {
   let newProduct = {
     name: inputName.value,
     description: inputDesc.value,
@@ -17,7 +22,7 @@ submitBtn.addEventListener("click", () => {
     price: inputPrice.value,
   };
 
-  postFunction(newProduct);
+  await postFunction(newProduct);
 
   window.location.assign("./index.html");
 });
