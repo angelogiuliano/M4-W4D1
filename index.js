@@ -98,7 +98,9 @@ try {
     iterazioneProdotto(data);
     for (let i = 0; i < cards.length; i++) {
       cards[i].addEventListener("click", () => {
-        window.location.assign("details.html?id=" + cards[i].attributes.id.value);
+        window.location.assign(
+          "details.html?id=" + cards[i].attributes.id.value
+        );
       });
     }
   };

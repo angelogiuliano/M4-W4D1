@@ -11,22 +11,28 @@ const inputBrandEdit = document.getElementById("inputBrandEdit");
 const InputUrlEdit = document.getElementById("InputUrlEdit");
 const inputPriceEdit = document.getElementById("inputPriceEdit");
 const submitBtn = document.getElementById("submitBtn");
-const check = document.getElementById('exampleCheck1')
+const check = document.getElementById("exampleCheck1");
 
-let editedProduct = {}
+let editedProduct = {};
 
-check.addEventListener('change', function () {
-    console.log(check.checked);
-    submitBtn.classList.toggle('disabled')
+check.addEventListener("change", function () {
+  console.log(check.checked);
+  submitBtn.classList.toggle("disabled");
 
-    editedProduct.name = inputNameEdit.value
-    editedProduct.description = inputDescEdit.value,
-    editedProduct.brand = inputBrandEdit.value,
-    editedProduct.imageUrl = InputUrlEdit.value,
-    editedProduct.price = inputPriceEdit.value
-})
+  editedProduct.name = inputNameEdit.value;
+  (editedProduct.description = inputDescEdit.value),
+    (editedProduct.brand = inputBrandEdit.value),
+    (editedProduct.imageUrl = InputUrlEdit.value),
+    (editedProduct.price = inputPriceEdit.value);
+});
 
-const inputEdits = [inputNameEdit, inputDescEdit, inputBrandEdit, InputUrlEdit, inputPriceEdit]
+const inputEdits = [
+  inputNameEdit,
+  inputDescEdit,
+  inputBrandEdit,
+  InputUrlEdit,
+  inputPriceEdit,
+];
 
 try {
   const getPreEditData = async () => {
@@ -39,20 +45,19 @@ try {
         },
       }
     );
-    const data = await response.json()
-    inputNameEdit.value = data.name
-    inputDescEdit.value = data.description
-    inputBrandEdit.value = data.brand
-    InputUrlEdit.value = data.imageUrl
-    inputPriceEdit.value = data.price
+    const data = await response.json();
+    inputNameEdit.value = data.name;
+    inputDescEdit.value = data.description;
+    inputBrandEdit.value = data.brand;
+    InputUrlEdit.value = data.imageUrl;
+    inputPriceEdit.value = data.price;
   };
-  getPreEditData()
+  getPreEditData();
 
   submitBtn.addEventListener("click", async () => {
-    await editButtonsFunction(id, editedProduct)
-    window.location.assign('./backoffice.html')
-  })
-
+    await editButtonsFunction(id, editedProduct);
+    window.location.assign("./backoffice.html");
+  });
 } catch (error) {
   console.error(error);
 }

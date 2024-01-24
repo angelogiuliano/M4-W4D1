@@ -37,7 +37,8 @@ const getData = async () => {
     for (const button of editButtons) {
       button.addEventListener("click", () => {
         window.location.assign(
-          "./formEditProduct.html?id=" + button.parentElement.attributes.id.value
+          "./formEditProduct.html?id=" +
+            button.parentElement.attributes.id.value
         );
       });
     }
