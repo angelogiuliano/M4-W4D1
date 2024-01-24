@@ -2,6 +2,7 @@ import { getFunction } from "./comps/GET.js";
 import { postFunction } from "./comps/POST.js";
 import { iterazioneProdotto } from "./comps/iterazioneProdotto.js";
 import { deleteButtonsFunction } from "./comps/deleteButtonsFunction.js";
+import { editButtonsFunction } from "./comps/editButtonsFunction.js";
 
 const backofficeMain = document.getElementById("backoffice-main");
 
@@ -19,14 +20,25 @@ const getData = async () => {
                     <p class="card-text"><b>Price:</b> ${product.price} $</p>
                 </div>
                 <button class="btn btn-primary w-50 my-2 mx-auto deletebtn">Cancella</button>
+                <button class="btn btn-success w-50 my-2 mx-auto editbtn">Modifica</button>
             </div>
             `;
     });
 
     const deleteButtons = document.getElementsByClassName("deletebtn");
-    for (let i = 0; i < deleteButtons.length; i++) {
-      deleteButtons[i].addEventListener("click", async () => {
-        await deleteButtonsFunction(deleteButtons[i]);
+    for (const button of deleteButtons) {
+      button.addEventListener("click", async () => {
+        await deleteButtonsFunction(button);
+      });
+    }
+
+    const editButtons = document.getElementsByClassName("editbtn");
+    console.log(editButtons);
+    for (const button of editButtons) {
+      button.addEventListener("click", () => {
+        window.location.assign(
+          "./formEditProduct.html?id=" + button.parentElement.attributes.id.value
+        );
       });
     }
   };
