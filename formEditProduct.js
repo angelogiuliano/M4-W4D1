@@ -15,12 +15,6 @@ let editedProduct = {};
 
 check.addEventListener("change", function () {
   submitBtn.classList.toggle("disabled");
-
-  editedProduct.name = inputNameEdit.value;
-  (editedProduct.description = inputDescEdit.value),
-    (editedProduct.brand = inputBrandEdit.value),
-    (editedProduct.imageUrl = InputUrlEdit.value),
-    (editedProduct.price = inputPriceEdit.value);
 });
 
 try {
@@ -50,6 +44,12 @@ try {
   getPreEditData();
 
   submitBtn.addEventListener("click", async () => {
+    editedProduct.name = inputNameEdit.value;
+    editedProduct.description = inputDescEdit.value;
+    editedProduct.brand = inputBrandEdit.value;
+    editedProduct.imageUrl = InputUrlEdit.value;
+    editedProduct.price = inputPriceEdit.value;
+
     await editButtonsFunction(id, editedProduct);
     window.location.assign("./backoffice.html");
   });
