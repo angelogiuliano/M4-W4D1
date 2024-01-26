@@ -1,4 +1,3 @@
-import { getFunction } from "./comps/GET.js";
 import { editButtonsFunction } from "./comps/editButtonsFunction.js";
 
 const params = new URLSearchParams(location.search);
@@ -24,14 +23,6 @@ check.addEventListener("change", function () {
     (editedProduct.price = inputPriceEdit.value);
 });
 
-const inputEdits = [
-  inputNameEdit,
-  inputDescEdit,
-  inputBrandEdit,
-  InputUrlEdit,
-  inputPriceEdit,
-];
-
 try {
   const getPreEditData = async () => {
     const response = await fetch(
@@ -43,13 +34,19 @@ try {
         },
       }
     );
-    const data = await response.json();
-    inputNameEdit.value = data.name;
-    inputDescEdit.value = data.description;
-    inputBrandEdit.value = data.brand;
-    InputUrlEdit.value = data.imageUrl;
-    inputPriceEdit.value = data.price;
+
+    if (response.ok) {
+      const data = await response.json();
+      inputNameEdit.value = data.name;
+      inputDescEdit.value = data.description;
+      inputBrandEdit.value = data.brand;
+      InputUrlEdit.value = data.imageUrl;
+      inputPriceEdit.value = data.price;
+    } else {
+      console.log("Error");
+    }
   };
+
   getPreEditData();
 
   submitBtn.addEventListener("click", async () => {

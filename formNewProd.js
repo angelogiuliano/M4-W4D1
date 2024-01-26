@@ -1,5 +1,4 @@
 import { postFunction } from "./comps/POST.js";
-import { getFunction } from "./comps/GET.js";
 
 const inputName = document.getElementById("inputName");
 const inputDesc = document.getElementById("inputDesc");

@@ -9,7 +9,11 @@ export const getFunction = async () => {
         },
       }
     );
-    return response;
+    if (response.ok) {
+      return response;
+    } else {
+      console.log("error");
+    }
   } catch (err) {
     console.error(err);
   }

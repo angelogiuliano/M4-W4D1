@@ -15,15 +15,19 @@ const getDetails = async (id) => {
 
   const data = await response.json();
 
-  det.innerHTML += `
-        <div id=${data._id} class="card align-items-center justify-content-center flex-row">
-            <img src=${data.imageUrl} class="w-25 mx-5 my-3" alt=${data.name}>
-            <div class="card-body ms-5 text-start p-0">
-                <h5 class=""><b>Product:</b> ${data.name}</h5>
-                <h5 class=""><b>Price:</b> ${data.price} $</h5>
-            </div>
+  if (response.ok) {
+    det.innerHTML += `
+    <div id=${data._id} class="card align-items-center justify-content-center flex-row">
+        <img src=${data.imageUrl} class="w-25 mx-5 my-3" alt=${data.name}>
+        <div class="card-body ms-5 text-start p-0">
+            <h5 class=""><b>Product:</b> ${data.name}</h5>
+            <h5 class=""><b>Price:</b> ${data.price} $</h5>
         </div>
-        `;
+    </div>
+    `;
+  } else {
+    console.log("Error");
+  }
 };
 
 getDetails(id);
